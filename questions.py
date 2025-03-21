@@ -23,7 +23,8 @@ answers = [
 correct_answers_index = [1, 2, 0, 3, 1]
 score = 0
  # El usuario deberá contestar 3 preguntas
-questions_to_ask = random.choices(list(zip(questions, answers, correct_answers_index)), k=3)
+ 
+questions_to_ask = random.sample(list(zip(questions, answers, correct_answers_index)), k=3)
 for preg, opcion, rta in questions_to_ask:     
      # Se muestra la pregunta y las respuestas posibles
      print(preg)
