@@ -23,12 +23,11 @@ answers = [
 correct_answers_index = [1, 2, 0, 3, 1]
 score = 0
  # El usuario deberá contestar 3 preguntas
-for _ in range(3):
-     # Se selecciona una pregunta aleatoria
-     question_index = random.randint(0, len(questions) - 1)
+questions_to_ask = random.choices(list(zip(questions, answers, correct_answers_index)), k=3)
+for preg, opcion, rta in questions_to_ask:     
      # Se muestra la pregunta y las respuestas posibles
-     print(questions[question_index])
-     for i, answer in enumerate(answers[question_index]):
+     print(preg)
+     for i, answer in enumerate(opcion):    
          print(f"{i + 1}. {answer}")
      # El usuario tiene 2 intentos para responder correctamente
      for intento in range(2):
@@ -40,7 +39,7 @@ for _ in range(3):
              print("ingrese un nro entre 1 y 4")
              exit(1)      
      # Se verifica si la respuesta es correcta
-         if user_answer == correct_answers_index[question_index]:
+         if user_answer == rta:
              print("¡Correcto!")
              score+=1
              break
@@ -48,9 +47,9 @@ for _ in range(3):
      # Si el usuario no responde correctamente después de 2 intentos,
      # se muestra la respuesta correcta
          print("Incorrecto. La respuesta correcta es:")
-         print(answers[question_index] [correct_answers_index[question_index]])
+         print(opcion[rta])
          score-=0.5
-     # Se imprime un blanco al final de la pregunta
+ 
 #tu puntaje final es:
 print(f"Tu puntaje es: {score}")
 print("")
